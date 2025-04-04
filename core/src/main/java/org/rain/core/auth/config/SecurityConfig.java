@@ -27,7 +27,7 @@ import java.util.Arrays;
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(name = "drop.auth.enable", havingValue = "true")
+@ConditionalOnProperty(name = "system.auth.enable", havingValue = "true")
 public class SecurityConfig {
 
     @Value("${server.servlet.context-path}")

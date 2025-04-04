@@ -40,7 +40,7 @@ knife4j:
 #  config: classpath:log/logback-dev.xml
 
 #本系统相关配置
-drop:
+system:
   version: 1.0
   auth:
     enable: true
