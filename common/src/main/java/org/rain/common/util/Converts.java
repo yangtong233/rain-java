@@ -1,4 +1,4 @@
-package org.rain.common.convert;
+package org.rain.common.util;
 
 import org.rain.common.convert.support.DefaultConversionService;
 
@@ -21,6 +21,15 @@ public class Converts {
 
     public static <T> T convert(Object source, Class<T> targetType) {
         return conversionService.convert(source, targetType);
+    }
+
+    public static <T> T convert(Object source, Class<T> targetType, T defaultValue) {
+        try {
+            return convert(source, targetType);
+        } catch (Exception e) {
+            System.err.println("转换失败，使用默认值");
+            return defaultValue;
+        }
     }
 
 }

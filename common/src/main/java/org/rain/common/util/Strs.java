@@ -1,6 +1,5 @@
-package org.rain.common.util.strings;
+package org.rain.common.util;
 
-import org.rain.common.convert.Converts;
 import org.rain.common.enums.Placeholder;
 
 import java.util.Map;
@@ -245,6 +244,14 @@ public class Strs {
         }
 
         return resultStr.toString();
+    }
+
+    /**
+     * 首字母大写
+     */
+    public static String firstCapitalize(String name) {
+        if (Strs.isEmpty(name)) return name;
+        return Character.toUpperCase(name.charAt(0)) + name.substring(1);
     }
 
 }

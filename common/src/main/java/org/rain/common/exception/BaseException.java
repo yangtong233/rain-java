@@ -2,6 +2,7 @@ package org.rain.common.exception;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.rain.common.enums.RespCode;
 
 /**
  * 自定义系统异常类
@@ -11,31 +12,26 @@ import lombok.EqualsAndHashCode;
 public class BaseException extends RuntimeException {
     private Integer code;
     private String message;
+    //原始异常类型
+    private Throwable throwable;
 
-    //public BaseException(String message) {
-    //    this(Resp.OTHER_ERROR.code, message);
-    //}
-    //
-    //public BaseException(Resp statusCode) {
-    //    this(statusCode.code, statusCode.message);
-    //}
-    //
-    //public BaseException(Integer code, String message) {
-    //    super(message);
-    //    this.code = code;
-    //    this.message = message;
-    //}
-    //
-    //public BaseException(String msg, Object... args) {
-    //    this(Strs.format(msg, args));
-    //}
-
-    public BaseException(Throwable cause) {
-        super(cause);
-    }
 
     public BaseException(String message) {
         this.message = message;
-        this.code = -1;
+        this.code = RespCode.FAIL.code;
+    }
+
+    public BaseException(Throwable cause) {
+        super(cause);
+        this.throwable = cause;
+        this.message = cause.getMessage();
+    }
+
+    @Override
+    public String toString() {
+        return "BaseException{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

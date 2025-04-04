@@ -1,4 +1,4 @@
-package org.rain.common.util.date;
+package org.rain.common.util;
 
 import org.rain.common.enums.DateUnit;
 

@@ -330,7 +330,19 @@ parent-project/
 
 * common基础模块结构
 
+  ```css
+  common/
+  ├── anno/ 		#通用注解
+  ├── convert/ 	#类型转换器组件
+  ├── enums/ 		#通用枚举
+  ├── exception/ 	#异常相关
+  ├── lock/ 		#锁相关
+  ├── model/ 		#通用类
+  ├── tree/ 		#树形操作组件
+  ├── util/ 		#工具类
+  ```
 
+  
 
 * core核心模块结构
 
