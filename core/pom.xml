@@ -13,7 +13,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <packaging>jar</packaging>
-    <description>核心模块，包含SpringBoot项目的配置，只能在SpringBoot环境下使用</description>
+    <description>核心模块，包含SpringBoot项目的配置和基础模块的功能扩展，只能在SpringBoot环境下使用</description>
 
     <dependencies>
         <dependency>

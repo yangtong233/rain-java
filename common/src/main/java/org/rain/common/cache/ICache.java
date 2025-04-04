@@ -24,7 +24,7 @@ public interface ICache {
     /**
      * 获取缓存
      */
-    Object get(String key);
+    <T >T get(String key);
 
     /**
      * 获取指定类型的缓存

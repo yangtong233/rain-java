@@ -1,5 +1,6 @@
 package org.rain.common.model;
 
+import com.google.gson.Gson;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.rain.common.enums.RespCode;
@@ -86,5 +87,11 @@ public class R<T> {
         r.code = respCode.code;
         r.message = respCode.message;
         return r;
+    }
+
+    @Override
+    public String toString() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 }

@@ -21,6 +21,11 @@ public class BaseException extends RuntimeException {
         this.code = RespCode.FAIL.code;
     }
 
+    public BaseException(RespCode respCode) {
+        this.message = respCode.message;
+        this.code = respCode.code;
+    }
+
     public BaseException(Throwable cause) {
         super(cause);
         this.throwable = cause;

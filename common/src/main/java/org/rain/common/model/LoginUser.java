@@ -2,6 +2,8 @@ package org.rain.common.model;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * created by yangtong on 2025/4/4 下午8:43
  * <br/>
@@ -28,5 +30,13 @@ public class LoginUser {
      * 用户当前部门
      */
     private String departCode;
+    /**
+     * 上次请求时间
+     */
+    private Long lastRequestTime;
+    /**
+     * 请求次数
+     */
+    private Long requestCount;
 
 }

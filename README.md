@@ -333,9 +333,11 @@ parent-project/
   ```css
   common/
   ├── anno/ 		#通用注解
+  ├── cache/ 		#缓存组件
   ├── convert/ 	#类型转换器组件
   ├── enums/ 		#通用枚举
   ├── exception/ 	#异常相关
+  ├── holder/ 	#上下文相关
   ├── lock/ 		#锁相关
   ├── model/ 		#通用类
   ├── tree/ 		#树形操作组件

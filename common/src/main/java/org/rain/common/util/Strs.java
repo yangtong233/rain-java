@@ -254,4 +254,41 @@ public class Strs {
         return Character.toUpperCase(name.charAt(0)) + name.substring(1);
     }
 
+    public static String sub(CharSequence str, int fromIndexInclude, int toIndexExclude) {
+        if (str == null) {
+            return null;
+        } else {
+            int len = str.length();
+            if (fromIndexInclude < 0) {
+                fromIndexInclude += len;
+                if (fromIndexInclude < 0) {
+                    fromIndexInclude = 0;
+                }
+            } else if (fromIndexInclude > len) {
+                fromIndexInclude = len;
+            }
+
+            if (toIndexExclude < 0) {
+                toIndexExclude += len;
+                if (toIndexExclude < 0) {
+                    toIndexExclude = len;
+                }
+            } else if (toIndexExclude > len) {
+                toIndexExclude = len;
+            }
+
+            if (toIndexExclude < fromIndexInclude) {
+                int tmp = fromIndexInclude;
+                fromIndexInclude = toIndexExclude;
+                toIndexExclude = tmp;
+            }
+
+            return fromIndexInclude == toIndexExclude ? "" : str.toString().substring(fromIndexInclude, toIndexExclude);
+        }
+    }
+
+    public static String subPre(CharSequence string, int toIndexExclude) {
+        return sub(string, 0, toIndexExclude);
+    }
+
 }

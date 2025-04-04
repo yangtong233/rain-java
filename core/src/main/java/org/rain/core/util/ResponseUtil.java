@@ -1,9 +1,14 @@
 package org.rain.core.util;
 
+import io.swagger.v3.core.util.Json;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.rain.common.model.R;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
+import java.io.IOException;
 
 /**
  * created by yangtong on 2025/4/4 下午7:09
@@ -11,6 +16,18 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  * @Description:
  */
 public class ResponseUtil {
+
+    public static void responseByCode(HttpServletResponse res, Integer code, String msg) {
+        try {
+            R r = code == 0 ? R.success() : R.error();
+            r.setMessage(msg).setCode(code);
+            res.setContentType("text/json;charset=UTF-8");
+            res.setStatus(HttpStatus.OK.value());
+            res.getWriter().printf(r.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 给响应添加支持跨域
      */

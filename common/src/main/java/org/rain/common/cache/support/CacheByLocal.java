@@ -20,10 +20,17 @@ import java.util.function.Supplier;
  */
 public class CacheByLocal implements ICache {
     private final Map<String, CacheObj> cache = new ConcurrentHashMap<>();
+    private volatile boolean isStop = false;
 
     {
+        System.out.println("正在使用基于JVM堆内存的缓存组件(*´▽｀)ノノ");
         Threads.execute(() -> {
             while (true) {
+                if (isStop) {
+                    cache.clear();
+                    System.gc();
+                    break;
+                }
                 try {
                     for (Map.Entry<String, CacheObj> entry : cache.entrySet()) {
                         CacheObj obj = entry.getValue();
@@ -56,9 +63,10 @@ public class CacheByLocal implements ICache {
         cache.put(key, cacheObj);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public Object get(String key) {
-        return get(key, Object.class);
+    public <T> T get(String key) {
+        return (T) get(key, Object.class);
     }
 
     @Override
@@ -121,6 +129,10 @@ public class CacheByLocal implements ICache {
     @Override
     public void clear() {
         cache.clear();
+    }
+
+    public void shutdown() {
+        isStop = true;
     }
 
 }
